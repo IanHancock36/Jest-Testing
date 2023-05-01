@@ -1,19 +1,22 @@
 import { render, screen } from "@testing-library/react";
-import { Greet } from "./greet";
+import { Greet } from "../components/greet/greet";
 
 // describe is how you group tests together. 
 
 describe("Greet", () => {
-  test(" renders correctly", () => {
+ it(" renders correctly", () => {
     render(<Greet />);
 
     const helloTextElement = screen.getByText(/hello/i);
     expect(helloTextElement).toBeInTheDocument;
   });
+  // you can nest tests inside a describe 
 
-  test("renders with a name", () => {
+  describe("Nested", () => {
+  it("renders with a name", () => {
     render(<Greet name="Ian" />);
     const textElement = screen.getByText("Hello Ian");
     expect(textElement).toBeInTheDocument();
   });
+})
 });
